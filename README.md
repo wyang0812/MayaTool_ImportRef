@@ -1,5 +1,4 @@
 Reference Easy Import 安裝教學
-作者： Wendy Yang
 
 用途：
 這是一個讓動畫師在 Maya 中快速導入參考影片的工具，
@@ -14,7 +13,7 @@ Reference Easy Import 安裝教學
 2) 把Install.mel拖曳至Maya視圖
 3) 會在Shelf/Custom直接出現小工具，點選即可使用
 
-或
+或是在步驟1後，在MAYA裡執行：
 
 import Reference_easy_import; 
 Reference_easy_import.run()
@@ -27,7 +26,8 @@ Reference_easy_import.run()
 
 Reload.py是備用檔案，重置Maya讀取該工具，可以忽略不管。
 
-目前測試過MAYA2020~2025都可以順利運行，
+(使用ChatGPT製作)
+目前測試過MAYA2020到2025都可以順利運行，
 2020的話我個人是可以，但有朋友無法使用，
 不過2022之後都是穩定運行的
 若無法使用，請再告訴我~
