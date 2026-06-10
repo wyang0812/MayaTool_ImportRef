@@ -1,0 +1,44 @@
+// ============================================================
+// Reference Easy Import - 安裝 Shelf 按鈕（最終版）
+// ============================================================
+
+global proc string reiEnsureShelf(string $shelfName) {
+    // 若指定 shelf 不存在則建立
+    string $gShelfTopLevel;
+    global string $gShelfTopLevel;
+    if (!`shelfLayout -exists $shelfName`) {
+        shelfLayout -parent $gShelfTopLevel $shelfName;
+    }
+    return $shelfName;
+}
+
+// ====== 可調參數 ======
+string $SHELF_NAME = "Custom";                          // 放置的 shelf 名稱
+string $BTN_LABEL  = "RefImport";                       // 按鈕文字
+string $BTN_ANNOT  = "Open Reference Easy Import";      // 滑鼠提示
+
+// Icon：位於共用 scripts 目錄（Documents/maya/scripts/...）
+string $BTN_ICON = `internalVar -userAppDir`;           // -> C:/Users/你/Documents/maya/
+$BTN_ICON += "scripts/Reference_easy_import/resources/icons/refimport.png";
+
+// 若找不到 icon，就清空，避免報錯
+if (!`filetest -f $BTN_ICON`) {
+    $BTN_ICON = "";
+}
+
+// 直接用 Python 執行
+string $PY_CMD = "import Reference_easy_import; Reference_easy_import.run()";
+
+// ====== 建立按鈕 ======
+string $shelf = `reiEnsureShelf($SHELF_NAME)`;
+shelfButton
+    -parent $shelf
+    -sourceType "python"      // 直接以 Python 模式執行
+    -command $PY_CMD
+    -annotation $BTN_ANNOT
+    -label $BTN_LABEL
+    -image $BTN_ICON
+    -image1 $BTN_ICON
+    -style "iconAndTextVertical";
+
+print ("[ReferenceEasyImport] Shelf button installed on: " + $SHELF_NAME + "\n");
