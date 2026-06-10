@@ -26,7 +26,7 @@ Reference_easy_import.run()
 
 Reload.py是備用檔案，重置Maya讀取該工具，可以忽略不管。
 
-(使用ChatGPT製作)
+這個小工具是使用ChatGPT製作
 目前測試過MAYA2020到2025都可以順利運行，
 2020的話我個人是可以，但有朋友無法使用，
 不過2022之後都是穩定運行的
